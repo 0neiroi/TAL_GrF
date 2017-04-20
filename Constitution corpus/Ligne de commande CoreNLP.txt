@@ -1,0 +1,1 @@
+java -mx1g -cp ”*” edu.stanford.nlp.pipeline.StanfordCoreNLP -props StanfordCoreNLP-french.properties -annotators tokenize,ssplit,pos -file Wikipedia - F only.txt
