@@ -4,4 +4,4 @@ java -mx1g -cp ”*” edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokeniz
 //Named Entity
 java -mx600m -cp "*;lib\*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz -textFile Wikipedia_F_only.txt
 
-java -mx600m -cp "*;lib/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz -outputFormat tabbedEntities -textFile Wikipedia_F_only.txt> Wikipedia_F_only_NamedEntities.tsv
+java -mx600m -cp "*;lib/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.muc.7class.distsim.crf.ser.gz -outputFormat tabbedEntities -textFile Wikipedia_F_only.txt> Wikipedia_F_only_NamedEntities.tsv
