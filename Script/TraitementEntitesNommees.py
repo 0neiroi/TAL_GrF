@@ -2,12 +2,10 @@ import nltk
 from nltk import tag
 from xml.dom import minidom
 import xml.etree.ElementTree as etree
-
-xmldoc = open('Wikipedia_F_only_Tokenizé par CoreNLP.xml','r', encoding = 'utf-8')
-tree = etree.parse(xmldoc)
-root = tree.getroot()
+import csv
 
 def getAttribs(pos):
+#retourne une liste de mot dont le tag correspond à celui en entrée
 	listReturned = []
 	for document in root:
 		for sentences in document:
@@ -45,7 +43,22 @@ def printAList(theList):
 	for i in range(len(theList)):
 		print(theList[i])
 
-nnp = getAttribs("NNP")
-list_Of_F_Names = getFNNP(nnp)
-list_Of_F_Names = checkDoublon(list_Of_F_Names)
-printAList(list_Of_F_Names)
+#nom des corpus
+corpusTokenized='Wikipedia_F_only_Tokenizé par CoreNLP.xml'
+corpusEN='Wikipedia_F_only_NamedEntities.tsv'
+#ouverture des corpus
+##xmldoc = open(corpusTokenized,'r', encoding = 'utf-8')
+##tree = etree.parse(xmldoc)
+##root = tree.getroot()
+
+tsvdoc=open(corpusEN)
+reader=csv.reader(tsvdoc)
+data=list(reader)
+for i in range (0,10):
+        print(data[i])
+
+
+##nnp = getAttribs("NNP")
+##list_Of_F_Names = getFNNP(nnp)
+##list_Of_F_Names = checkDoublon(list_Of_F_Names)
+##printAList(list_Of_F_Names)
