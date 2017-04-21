@@ -7,7 +7,7 @@ xmldoc = open('Wikipedia_F_only_Tokenizé par CoreNLP.xml','r', encoding = 'utf-
 tree = etree.parse(xmldoc)
 root = tree.getroot()
 
-def getNNPAttribs():
+def getAttribs(pos):
 	listReturned = []
 	for document in root:
 		for sentences in document:
@@ -15,7 +15,7 @@ def getNNPAttribs():
 				for tokens in sentence:
 					for token in tokens:
 						tag = token.find('POS').text
-						if (tag == 'NNP'):
+						if (tag == pos):
 							name = token.find('word').text
 							listReturned.append(name)
 
@@ -45,7 +45,7 @@ def printAList(theList):
 	for i in range(len(theList)):
 		print(theList[i])
 
-nnp = getNNPAttribs()
+nnp = getAttribs("NNP")
 list_Of_F_Names = getFNNP(nnp)
 list_Of_F_Names = checkDoublon(list_Of_F_Names)
 printAList(list_Of_F_Names)
