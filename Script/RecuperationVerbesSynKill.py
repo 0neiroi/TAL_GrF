@@ -81,7 +81,7 @@ def findKillVerbsInText():
 def putListInTxt(listToTxt, nameOfTheTxtFile):
 	textOfList = open(nameOfTheTxtFile, 'w', encoding = 'utf-8')
 	for i in range(len(listToTxt)):
-		print(listToTxt[i])
+		#print(listToTxt[i])
 		#Si c'est un Synset à ajouter :
 		#textOfList.write(listToTxt[i].lemmas()[0].name().lower())
 		#Si c'est un mot à ajouter :
@@ -140,6 +140,6 @@ root = tree.getroot()
 #putListInTxt(listOfKillSyn, "Text des synonymes de killed.txt")
 
 killVerbsInText = findKillVerbsInText()
-printAList(killVerbsInText)
-print(len(killVerbsInText))
+#printAList(killVerbsInText)
+#print(len(killVerbsInText))
 #putListInTxt(killVerbsInText, 'Liste syn Kill dans Corpus.txt')
