@@ -44,6 +44,14 @@ def printAList(theList):
 	for i in range(len(theList)):
 		print(theList[i])
 
+def putListInTxt(listToTxt, nameOfTheTxtFile):
+	textOfList = open(nameOfTheTxtFile, 'w', encoding = 'utf-8')
+	for i in range(len(listToTxt)):
+		print(listToTxt[i])
+		textOfList.write(listToTxt[i])
+		textOfList.write('\n')
+	textOfList.close()
+                                                                      
 #nom des corpus
 corpusTokenized='Wikipedia_F_only_Tokenizé par CoreNLP.xml'
 corpusEN='Wikipedia_F_only_NamedEntities.tsv'
@@ -74,12 +82,15 @@ for x in EN:
                 dates.append(x[0])
         if x[1]=="LOCATION":
                 locations.append(x[0])
-#surrpession des doublons
+#suprpession des doublons
 Fpersons=checkDoublon(Fpersons)
 persons=checkDoublon(persons)
 dates=checkDoublon(dates)
 locations=checkDoublon(locations)
-
+putListInTxt(Fpersons,"Fpersons.txt")
+putListInTxt(persons,"persons.txt")
+putListInTxt(dates,"dates.txt")
+putListInTxt(locations,"locations.txt")
 
 
 ##nnp = getAttribs("NNP")
