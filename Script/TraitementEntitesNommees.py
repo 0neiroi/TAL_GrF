@@ -3,6 +3,7 @@ from nltk import tag
 from xml.dom import minidom
 import xml.etree.ElementTree as etree
 import csv
+import re
 
 def getAttribs(pos):
 #retourne une liste de mot dont le tag correspond à celui en entrée
@@ -47,15 +48,38 @@ def printAList(theList):
 corpusTokenized='Wikipedia_F_only_Tokenizé par CoreNLP.xml'
 corpusEN='Wikipedia_F_only_NamedEntities.tsv'
 #ouverture des corpus
-##xmldoc = open(corpusTokenized,'r', encoding = 'utf-8')
-##tree = etree.parse(xmldoc)
-##root = tree.getroot()
+xmldoc = open(corpusTokenized,'r', encoding = 'utf-8')
+tree = etree.parse(xmldoc)
+root = tree.getroot()
 
+#création de EN, tableau des entités nommées sous la forme [EN,Type,PhraseSuivante]
 tsvdoc=open(corpusEN)
-reader=csv.reader(tsvdoc)
-data=list(reader)
-for i in range (0,10):
-        print(data[i])
+lines=tsvdoc.readlines()
+EN=[]
+for line in lines:
+        EN.append(line.split('\t'))
+
+#récupération des EN par catégories
+persons=[]#tableau de personnes
+Fpersons=[]#tableau de personnes dont le nom commence par F
+pattern = re.compile("^(\w*\s)*F(\w*\s?)+")#regex F nom commençant par Fdates=[]#tableau de dates
+locations=[]#tableau de locations
+for x in EN:
+        if x[1]=="PERSON":
+                persons.append(x[0])
+                if pattern.match(x[0]):#regex F nom commençant par F
+                      Fpersons.append(x[0])
+        if x[1]=="DATE":
+                dates.append(x[0])
+        if x[1]=="LOCATION":
+                locations.append(x[0])
+#surrpession des doublons
+Fpersons=checkDoublon(Fpersons)
+persons=checkDoublon(persons)
+dates=checkDoublon(dates)
+locations=checkDoublon(locations)
+print(locations)
+
 
 
 ##nnp = getAttribs("NNP")
