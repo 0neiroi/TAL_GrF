@@ -62,8 +62,9 @@ for line in lines:
 #récupération des EN par catégories
 persons=[]#tableau de personnes
 Fpersons=[]#tableau de personnes dont le nom commence par F
-pattern = re.compile("^(\w*\s)*F(\w*\s?)+")#regex F nom commençant par Fdates=[]#tableau de dates
+pattern = re.compile("^(\w*\s)*F(\w*\s?)+")#regex F nom commençant par F
 locations=[]#tableau de locations
+dates=[]#tableau de dates
 for x in EN:
         if x[1]=="PERSON":
                 persons.append(x[0])
@@ -78,7 +79,6 @@ Fpersons=checkDoublon(Fpersons)
 persons=checkDoublon(persons)
 dates=checkDoublon(dates)
 locations=checkDoublon(locations)
-print(locations)
 
 
 
