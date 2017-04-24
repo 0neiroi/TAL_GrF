@@ -1,5 +1,5 @@
 ﻿Liste des fichiers .py et leurs utilité :
-	-IdentificationEtTraitementEntitésNommées : récupère les entités nommées du texte grâce à un fichier tsv, puis identifie des modèles dans le xml tokenizé
+	-TraitementEntitésNommées : récupère les entités nommées du texte grâce à un fichier tsv, puis les exporte en txt
 	-RecupérationVerbesSynKill : Récupère les verbes du texte et les synonymes de 'killed', et compare les deux listes (mises au format txt pour gagner du temps de recherche) afin de connaitre l'emplacement des verbes synonymes de 'killed' dans le corpus. Rend un emplacement, correspondant au numéro du verbe dans le corpus (exemple : verbe numéro 1504 sur 12540 verbes)
 
 Liste des fichiers .txt : 
