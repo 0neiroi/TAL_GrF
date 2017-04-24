@@ -140,6 +140,5 @@ root = tree.getroot()
 #putListInTxt(listOfKillSyn, "Text des synonymes de killed.txt")
 
 killVerbsInText = findKillVerbsInText()
-#printAList(killVerbsInText)
-#print(len(killVerbsInText))
-#putListInTxt(killVerbsInText, 'Liste syn Kill dans Corpus.txt')
+printAList(killVerbsInText)
+print('length de la liste des synonymes de "killed" dans le texte : ', len(killVerbsInText))
